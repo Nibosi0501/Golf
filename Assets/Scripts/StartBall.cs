@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class StartBall : MonoBehaviour
 {
+    [SerializeField] GameObject golfBall;
     [SerializeField] float initialSpeed = 10f;
     [SerializeField] Vector3 startDirection = Vector3.forward;
     private Rigidbody rb;
+
+
     void Start()
     {
         StartCoroutine(WaitUntilPositionReached(-5.0f));
 
-        rb = GetComponent<Rigidbody>();
+        rb = golfBall.GetComponent<Rigidbody>();
 
         // 初速×方向に一度だけ力を加える
         rb.AddForce(startDirection.normalized * initialSpeed, ForceMode.Impulse);
